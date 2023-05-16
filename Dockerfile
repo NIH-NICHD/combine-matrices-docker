@@ -3,11 +3,7 @@ FROM rocker/tidyverse
 LABEL description="Base docker image with tidyverse and hence R and util libraries"
 ARG ENV_NAME="combine-matrices"
 
-# Install dependencies if any needed -- this is a template
-# Since our base image is an R docker base we will use BiocManager install
-
 RUN apt-get update && \ 
-    R -e "install.packages(c('BiocManager'), repos='https://cloud.r-project.org/');BiocManager::install('package-name-here')" && \
     apt-get clean -y
 
 
@@ -21,8 +17,8 @@ RUN apt-get update && \
 # an accessible location for execution at the command line with
 # the docker file
 #
-ADD ./your-script-name.R /usr/local/bin/
+ADD ./combine_matrices.R /usr/local/bin/
 
-RUN chmod +x /usr/local/bin/your-script-name.R
+RUN chmod +x /usr/local/bin/combine_matrices.R
 
 
