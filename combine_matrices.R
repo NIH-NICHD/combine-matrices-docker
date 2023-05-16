@@ -24,5 +24,7 @@ matrix2 <- data.frame(read.csv(arg$m2, sep="\t"))
  
 combined <- inner_join(matrix1, matrix2, by = "gene_id")
 
+combined <- as.matrix(combined)
+
 write.csv(combined, "/sbgenomics/output-files/combined_matrices.csv")
 
